@@ -1,0 +1,36 @@
+databaseChangeLog:
+  - changeSet:
+      id: role-permission-table-create
+      author: Inam
+      changes:
+        - createTable:
+            tableName: role_permission
+            columns:
+              - column:
+                  name: role_id
+                  type: int
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                    referencedTableName: role
+                    referencedColumnName: id
+              - column:
+                  name: permission_id
+                  type: int
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                    referencedTableName: permission
+                    referencedColumnName: id
+  - changeSet:
+      id: role-permission-seed-library-admin
+      author: Inam
+      changes:
+        - sql:
+            sql: insert into role_permission select 1, id from permission
+  - changeSet:
+        id: role-permission-seed-library-user
+        author: Inam
+        changes:
+          - sql:
+              sql: insert into role_permission select 2, id from permission where name in ('api.books.list', 'api.books.get')

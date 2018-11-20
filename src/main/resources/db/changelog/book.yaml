@@ -1,0 +1,112 @@
+databaseChangeLog:
+- changeSet:
+    id: book-table-create
+    author: Inam
+    changes:
+    - createTable:
+        tableName: book
+        columns:
+        - column:
+            name: id
+            type: int
+            autoIncrement: true
+            constraints:
+              primaryKey: true
+              nullable: false
+        - column:
+            name: title
+            type: nvarchar(500)
+            constraints:
+              nullable: false
+        - column:
+            name: author
+            type: nvarchar(100)
+            constraints:
+              nullable: false
+        - column:
+            name: published_date
+            type: datetime
+            constraints:
+              nullable: false
+        - column:
+            name: created_date
+            type: datetime
+            constraints:
+              nullable: false
+        - column:
+            name: last_modified_date
+            type: datetime
+            constraints:
+              nullable: false
+        - column:
+            name: is_deleted
+            type: bit(1)
+            constraints:
+              nullable: false
+- changeSet:
+    id: book-seed-books
+    author: Inam
+    changes:
+    - insert:
+        tableName: book
+        columns:
+        - column:
+            name: title
+            value: Java Beginner’s Guide
+        - column:
+            name: author
+            value: Herbert Schildt
+        - column:
+            name: published_date
+            valueDate: "2014-05-06 00:00:00"
+        - column:
+            name: created_date
+            valueDate: ${now}
+        - column:
+            name: last_modified_date
+            valueDate: ${now}
+        - column:
+            name: is_deleted
+            valueBoolean: false
+    - insert:
+        tableName: book
+        columns:
+        - column:
+            name: title
+            value: Java 11 Cookbook
+        - column:
+            name: author
+            value: Nick Samoylov
+        - column:
+            name: published_date
+            valueDate: "2018-09-29 00:00:00"
+        - column:
+            name: created_date
+            valueDate: ${now}
+        - column:
+            name: last_modified_date
+            valueDate: ${now}
+        - column:
+            name: is_deleted
+            valueBoolean: false
+    - insert:
+        tableName: book
+        columns:
+        - column:
+            name: title
+            value: Java Fundamentals
+        - column:
+            name: author
+            value: Cay S. Horstmann
+        - column:
+            name: published_date
+            valueDate: "2018-08-27 00:00:00"
+        - column:
+            name: created_date
+            valueDate: ${now}
+        - column:
+            name: last_modified_date
+            valueDate: ${now}
+        - column:
+            name: is_deleted
+            valueBoolean: false

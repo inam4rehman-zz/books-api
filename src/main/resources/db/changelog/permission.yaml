@@ -1,0 +1,154 @@
+databaseChangeLog:
+  - changeSet:
+      id: permission-table-create
+      author: Inam
+      changes:
+        - createTable:
+            tableName: permission
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: nvarchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: description
+                  type: nvarchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: is_immutable
+                  type: bit(1)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_date
+                  type: datetime
+                  constraints:
+                    nullable: false
+              - column:
+                  name: last_modified_date
+                  type: datetime
+                  constraints:
+                    nullable: false
+              - column:
+                  name: is_deleted
+                  type: bit(1)
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: permission-seed-books-api
+      author: Inam
+      changes:
+        - insert:
+            tableName: permission
+            columns:
+              - column:
+                  name: name
+                  value: api.books.list
+              - column:
+                  name: description
+                  value: /books GET web service endpoint to return a full list of books
+              - column:
+                  name: is_immutable
+                  valueBoolean: true
+              - column:
+                  name: created_date
+                  valueDate: ${now}
+              - column:
+                  name: last_modified_date
+                  valueDate: ${now}
+              - column:
+                  name: is_deleted
+                  valueBoolean: false
+        - insert:
+            tableName: permission
+            columns:
+              - column:
+                  name: name
+                  value: api.books.get
+              - column:
+                  name: description
+                  value: /books/:id GET web service endpoint to retrieve a specific book record by :id
+              - column:
+                  name: is_immutable
+                  valueBoolean: tru
+              - column:
+                  name: created_date
+                  valueDate: ${now}
+              - column:
+                  name: last_modified_date
+                  valueDate: ${now}
+              - column:
+                  name: is_deleted
+                  valueBoolean: false
+        - insert:
+            tableName: permission
+            columns:
+              - column:
+                  name: name
+                  value: api.books.create
+              - column:
+                  name: description
+                  value: /books POST web service endpoint to create a new book
+              - column:
+                  name: is_immutable
+                  valueBoolean: tru
+              - column:
+                  name: created_date
+                  valueDate: ${now}
+              - column:
+                  name: last_modified_date
+                  valueDate: ${now}
+              - column:
+                  name: is_deleted
+                  valueBoolean: false
+        - insert:
+            tableName: permission
+            columns:
+              - column:
+                  name: name
+                  value: api.books.update
+              - column:
+                  name: description
+                  value: /books/:id PUT web service endpoint to update a specific books by :id
+              - column:
+                  name: is_immutable
+                  valueBoolean: true
+              - column:
+                  name: created_date
+                  valueDate: ${now}
+              - column:
+                  name: last_modified_date
+                  valueDate: ${now}
+              - column:
+                  name: is_deleted
+                  valueBoolean: false
+        - insert:
+            tableName: permission
+            columns:
+              - column:
+                  name: name
+                  value: api.books.delete
+              - column:
+                  name: description
+                  value: /books/:id DELETE web service endpoint to delete a specific book by :id
+              - column:
+                  name: is_immutable
+                  valueBoolean: true
+              - column:
+                  name: created_date
+                  valueDate: ${now}
+              - column:
+                  name: last_modified_date
+                  valueDate: ${now}
+              - column:
+                  name: is_deleted
+                  valueBoolean: false

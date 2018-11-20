@@ -1,0 +1,46 @@
+databaseChangeLog:
+  - changeSet:
+      id: user-role-table-create
+      author: Inam
+      changes:
+        - createTable:
+            tableName: user_role
+            columns:
+              - column:
+                  name: user_id
+                  type: int
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                    referencedTableName: user
+                    referencedColumnName: id
+              - column:
+                  name: role_id
+                  type: int
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                    referencedTableName: role
+                    referencedColumnName: id
+  - changeSet:
+      id: user_role-seed
+      author: Inam
+      changes:
+        - insert:
+            tableName: user_role
+            columns:
+              - column:
+                  name: user_id
+                  value: 1
+              - column:
+                  name: role_id
+                  value: 1
+        - insert:
+            tableName: user_role
+            columns:
+              - column:
+                  name: user_id
+                  value: 2
+              - column:
+                  name: role_id
+                  value: 2

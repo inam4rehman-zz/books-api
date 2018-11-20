@@ -1,0 +1,148 @@
+databaseChangeLog:
+  - changeSet:
+      id: user-table-create
+      author: Inam
+      changes:
+        - createTable:
+            tableName: user
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: first_name
+                  type: nvarchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: last_name
+                  type: nvarchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: username
+                  type: nvarchar(255)
+                  constraints:
+                    nullable: false
+                    unique: true
+                    uniqueConstraintName: UQ_user_username_unique
+              - column:
+                  name: password
+                  type: nvarchar(500)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: is_enabled
+                  type: bit(1)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: is_account_expired
+                  type: bit(1)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: is_credentials_expired
+                  type: bit(1)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: is_account_locked
+                  type: bit(1)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_date
+                  type: datetime
+                  constraints:
+                    nullable: false
+              - column:
+                  name: last_modified_date
+                  type: datetime
+                  constraints:
+                    nullable: false
+              - column:
+                  name: is_deleted
+                  type: bit(1)
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: user-seed-users
+      author: Inam
+      changes:
+        - insert:
+            tableName: user
+            columns:
+              - column:
+                  name: first_name
+                  value: Super
+              - column:
+                  name: last_name
+                  value: User
+              - column:
+                  name: username
+                  value: super
+              - column:
+                  name: password
+                  value: $2a$10$QS2OKglEjP8mANMlxaxVMujN6UyOq1N7ojQ0LZvi.UGBrBoIO9q3m
+              - column:
+                  name: is_enabled
+                  valueBoolean: true
+              - column:
+                  name: is_account_expired
+                  valueBoolean: false
+              - column:
+                  name: is_credentials_expired
+                  valueBoolean: false
+              - column:
+                  name: is_account_locked
+                  valueBoolean: false
+              - column:
+                  name: created_date
+                  valueDate: ${now}
+              - column:
+                  name: last_modified_date
+                  valueDate: ${now}
+              - column:
+                  name: is_deleted
+                  valueBoolean: false
+        - insert:
+            tableName: user
+            columns:
+              - column:
+                  name: first_name
+                  value: Standard
+              - column:
+                  name: last_name
+                  value: User
+              - column:
+                  name: username
+                  value: standard
+              - column:
+                  name: password
+                  value: $2a$10$jhQhKrZyVEa3aDhbQnxooefdaK5/DkDCKPglM/hChgTLiEyjUJUe2
+              - column:
+                  name: is_enabled
+                  valueBoolean: true
+              - column:
+                  name: is_account_expired
+                  valueBoolean: false
+              - column:
+                  name: is_credentials_expired
+                  valueBoolean: false
+              - column:
+                  name: is_account_locked
+                  valueBoolean: false
+              - column:
+                  name: created_date
+                  valueDate: ${now}
+              - column:
+                  name: last_modified_date
+                  valueDate: ${now}
+              - column:
+                  name: is_deleted
+                  valueBoolean: false

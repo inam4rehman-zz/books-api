@@ -1,0 +1,80 @@
+databaseChangeLog:
+  - changeSet:
+      id: role-table-create
+      author: Inam
+      changes:
+        - createTable:
+            tableName: role
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: nvarchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: authority
+                  type: nvarchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_date
+                  type: datetime
+                  constraints:
+                    nullable: false
+              - column:
+                  name: last_modified_date
+                  type: datetime
+                  constraints:
+                    nullable: false
+              - column:
+                  name: is_deleted
+                  type: bit(1)
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: role-seed-roles
+      author: Inam
+      changes:
+        - insert:
+            tableName: role
+            columns:
+              - column:
+                  name: name
+                  value: Library Admin
+              - column:
+                  name: authority
+                  value: library.admin
+              - column:
+                  name: created_date
+                  valueDate: ${now}
+              - column:
+                  name: last_modified_date
+                  valueDate: ${now}
+              - column:
+                  name: is_deleted
+                  valueBoolean: false
+        - insert:
+            tableName: role
+            columns:
+              - column:
+                  name: name
+                  value: Library User
+              - column:
+                  name: authority
+                  value: library.user
+              - column:
+                  name: created_date
+                  valueDate: ${now}
+              - column:
+                  name: last_modified_date
+                  valueDate: ${now}
+              - column:
+                  name: is_deleted
+                  valueBoolean: false
