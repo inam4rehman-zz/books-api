@@ -9,7 +9,7 @@ Standard user have two permissions:
 
 and Super user can perform all the CRUD operations
 * Get list of books
-* Get one books by id
-* Add new Book
+* Get one book by id
+* Add new book
 * Update any existing book
 * Delete any existing book
